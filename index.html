@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title></title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="images/favicon.png" />
+  </head>
+
+  <body id="body">
+    <nav id="nav">
+      <div id="menu-icon" onclick="toggleSettings()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+
+      <span id="search" contenteditable="true" aria-placeholder="Search the web"></span>
+
+      <div id="weather">
+        12°C rainy
+        <br/>
+        Brussels
+      </div>
+    </nav>
+
+    <div id="settings">
+      <h1>Settings</h1>
+
+      <div class="settings-group">
+        <h2>Search</h2>
+        <ul>
+          <li id="settings-search-enabled" class="settings-item" onclick="enableSearch(true)">On</li>
+          <li id="settings-search-disabled" class="settings-item" onclick="enableSearch(false)">Off</li>
+        </ul>
+        <ul>
+          <li id="settings-search-duckduckgo" class="settings-item" onclick="searchEngine('duckduckgo')">DuckDuckGo</li>
+          <li id="settings-search-google" class="settings-item" onclick="searchEngine('google')">Google</li>
+          <li id="settings-search-youtube" class="settings-item" onclick="searchEngine('youtube')">Youtube</li>
+        </ul>
+      </div>
+
+
+      <div class="settings-group">
+        <h2>Weather</h2>
+        On | Off
+        <br/>
+        <strong>C°</strong> | F°
+      </div>
+
+      <div class="settings-group">
+        <label for="browser">City: </label>
+        <input list="browsers" name="browser" id="browser" class="transparent-input">
+        <datalist id="browsers">
+          <option value="Edge">
+          <option value="Firefox">
+          <option value="Chrome">
+          <option value="Opera">
+          <option value="Safari">
+        </datalist>
+      </div>
+
+      <div class="settings-group">
+        <h2>Time</h2>
+        <ul>
+          <li class="settings-item settings-item-selected">On</li>
+          <li class="settings-item"> | </li>
+          <li class="settings-item">Off</li>
+        </ul>
+        <strong>12h</strong> | 24h
+      </div>
+
+      <div class="settings-group">
+        <h2>ToDo</h2>
+        <ul>
+          <li class="settings-item settings-item-selected">On</li>
+          <li class="settings-item"> | </li>
+          <li class="settings-item">Off</li>
+        </ul>
+      </div>
+
+      <div class="settings-group">
+        <h2>Greeting</h2>
+        <ul>
+          <li class="settings-item settings-item-selected">On</li>
+          <li class="settings-item"> | </li>
+          <li class="settings-item">Off</li>
+        </ul>
+      </div>
+
+      <div class="settings-group">
+        <h2>Bookmarks</h2>
+        <ul>
+          <li class="settings-item settings-item-selected">On</li>
+          <li class="settings-item"> | </li>
+          <li class="settings-item">Off</li>
+        </ul>
+      </div>
+
+      <div class="settings-group">
+        <h2>Language</h2>
+        <strong>English</strong> | Français
+      </div>
+
+      <div class="settings-group">
+      </div>
+    </div>
+
+    <div id="container" class="xrow">
+      <section id="column-1" class="xcolumn">
+        <h2 id="greeting">
+          Good morning,&nbsp; 
+          <span id="appuser" contenteditable="true"></span>.
+        </h2>
+        <p id="time">05:05:22 AM</p>
+        <span id="date">Sunday, November 15, 2020</span>
+      </section>
+      <aside id="column-2" class="xcolumn">
+        <h2>Tasks</h2>
+        <ul>
+          <li>Finish the design</li>
+          <li>This is another task with a big title</li>
+        </ul>
+      </aside>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
