@@ -191,6 +191,7 @@ function Search() {
 /**
  * Weather
  */
+
 var settingsWeatherEnabled = document.getElementById("settings-weather-enabled");
 var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
 var weather = document.getElementById("weather");
@@ -221,6 +222,7 @@ function Weather() {
 /**
  * Greeting
  */
+
 var settingsGreetingEnabled = document.getElementById("settings-greeting-enabled");
 var settingsGreetingDisabled = document.getElementById("settings-greeting-disabled");
 var greeting = document.getElementById("greeting");
@@ -265,8 +267,9 @@ function Greeting() {
   chooseGreetingEnabled();
 }
 
+
 /**
- * Date and time
+ * Time
  */
 
 var settingsTimeEnabled = document.getElementById("settings-time-enabled");
@@ -306,7 +309,6 @@ const getDateTime = () => {
   setTimeout(getDateTime, 1000);
 };
 
-
 function chooseTimeEnabled() {
   if(app.time.enabled) {
     settingsTimeEnabled.classList.add('settings-item-selected');
@@ -325,7 +327,7 @@ function enableTime(value) {
   chooseTimeEnabled();
 }
 
-function dateTime() {
+function CurrentTime() {
   getDateTime();
   chooseTimeEnabled();
 }
@@ -334,6 +336,7 @@ function dateTime() {
 /**
  * Date
  */
+
 var settingsDateEnabled = document.getElementById("settings-date-enabled");
 var settingsDateDisabled = document.getElementById("settings-date-disabled");
 var date = document.getElementById("date");
@@ -360,9 +363,11 @@ function CurrentDate() {
   chooseDateEnabled();
 }
 
+
 /**
  * Run
  */
+
 function run() {
   data = dataGet();
   
@@ -372,10 +377,10 @@ function run() {
   
   Appuser();
   Search();
-  dateTime();
-  Greeting();
-  CurrentDate();
   Weather();
+  Greeting();
+  CurrentTime();
+  CurrentDate();
 }
 
 run();
