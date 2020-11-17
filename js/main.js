@@ -13,8 +13,15 @@ let app = {
   weather: {
     enabled: true,
   },
+  greeting: {
+    enabled: true,
+  },
   time: {
+    enabled: true,
     format: 12,
+  },
+  date: {
+    enabled: true,
   },
   todo: {
     enabled: true,
@@ -186,8 +193,8 @@ function Search() {
  */
 var settingsWeatherEnabled = document.getElementById("settings-weather-enabled");
 var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
-
 var weather = document.getElementById("weather");
+
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
     settingsWeatherEnabled.classList.add('settings-item-selected');
@@ -210,10 +217,61 @@ function Weather() {
   chooseWeatherEnabled();
 }
 
+
+/**
+ * Greeting
+ */
+var settingsGreetingEnabled = document.getElementById("settings-greeting-enabled");
+var settingsGreetingDisabled = document.getElementById("settings-greeting-disabled");
+var greeting = document.getElementById("greeting");
+
+function chooseGreetingEnabled() {
+  if(app.greeting.enabled) {
+    settingsGreetingEnabled.classList.add('settings-item-selected');
+    settingsGreetingDisabled.classList.remove('settings-item-selected');
+    greeting.style.display = "block";
+  } else {
+    settingsGreetingDisabled.classList.add('settings-item-selected');
+    settingsGreetingEnabled.classList.remove('settings-item-selected');
+    greeting.style.display = "none";
+  }
+}
+
+function enableGreeting(value) {
+  app.greeting.enabled = value;
+  dataSave();
+  chooseGreetingEnabled();
+}
+
+function getGreeting() {
+  timestamp = new Date();
+  let hour = timestamp.getHours();
+
+  let greeting = 'Good morning, ';
+
+  if (hour < 12) {
+    greeting = 'Good morning,'
+  } else if (hour < 18) {
+    greeting = 'Good afternoon,'
+  } else {
+    greeting = 'Good evening,'
+  }
+
+  document.querySelector('#greeting').insertAdjacentHTML('afterbegin', greeting);
+}
+
+function Greeting() {
+  getGreeting();
+  chooseGreetingEnabled();
+}
+
 /**
  * Date and time
  */
 
+var settingsTimeEnabled = document.getElementById("settings-time-enabled");
+var settingsTimeDisabled = document.getElementById("settings-time-disabled");
+var time = document.getElementById("time");
 
 const getDateTime = () => {
   timestamp = new Date();
@@ -248,26 +306,58 @@ const getDateTime = () => {
   setTimeout(getDateTime, 1000);
 };
 
-function getGreeting() {
-  timestamp = new Date();
-  let hour = timestamp.getHours();
 
-  let greeting = 'Good morning, ';
-
-  if (hour < 12) {
-    greeting = 'Good morning,'
-  } else if (hour < 18) {
-    greeting = 'Good afternoon,'
+function chooseTimeEnabled() {
+  if(app.time.enabled) {
+    settingsTimeEnabled.classList.add('settings-item-selected');
+    settingsTimeDisabled.classList.remove('settings-item-selected');
+    time.style.display = "block";
   } else {
-    greeting = 'Good evening,'
+    settingsTimeDisabled.classList.add('settings-item-selected');
+    settingsTimeEnabled.classList.remove('settings-item-selected');
+    time.style.display = "none";
   }
+}
 
-  document.querySelector('#greeting').insertAdjacentHTML('afterbegin', greeting);
+function enableTime(value) {
+  app.time.enabled = value;
+  dataSave();
+  chooseTimeEnabled();
 }
 
 function dateTime() {
   getDateTime();
-  getGreeting();
+  chooseTimeEnabled();
+}
+
+
+/**
+ * Date
+ */
+var settingsDateEnabled = document.getElementById("settings-date-enabled");
+var settingsDateDisabled = document.getElementById("settings-date-disabled");
+var date = document.getElementById("date");
+
+function chooseDateEnabled() {
+  if(app.date.enabled) {
+    settingsDateEnabled.classList.add('settings-item-selected');
+    settingsDateDisabled.classList.remove('settings-item-selected');
+    date.style.display = "block";
+  } else {
+    settingsDateDisabled.classList.add('settings-item-selected');
+    settingsDateEnabled.classList.remove('settings-item-selected');
+    date.style.display = "none";
+  }
+}
+
+function enableDate(value) {
+  app.date.enabled = value;
+  dataSave();
+  chooseDateEnabled();
+}
+
+function CurrentDate() {
+  chooseDateEnabled();
 }
 
 /**
@@ -283,6 +373,8 @@ function run() {
   Appuser();
   Search();
   dateTime();
+  Greeting();
+  CurrentDate();
   Weather();
 }
 
