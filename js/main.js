@@ -66,6 +66,11 @@ function toggleSettings() {
   document.getElementById("menu-icon").classList.toggle("change");
 } 
 
+function resetApp() {
+  confirm('This will reset the app to the default values. Continue?');
+  dataDelete();
+  location.reload();
+}
 
 /**
  * appuser
