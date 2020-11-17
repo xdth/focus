@@ -1,8 +1,6 @@
 /**
  * Todo:
  *  Cache API response in localStorage for 1h
- * 
- * 
  */
 
 // app object 
@@ -187,7 +185,6 @@ function Search() {
 
 const getDateTime = () => {
   timestamp = new Date();
-  // timestamp = new Date(1, 1, 1, 20, 4, 5);
   let weekDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let weekDay = weekDayNames[timestamp.getDay()];
   let day = timestamp.getDate();
@@ -221,7 +218,6 @@ const getDateTime = () => {
 
 function getGreeting() {
   timestamp = new Date();
-  // timestamp = new Date(1, 1, 1, 1, 4, 5);
   let hour = timestamp.getHours();
 
   let greeting = 'Good morning, ';
@@ -258,32 +254,3 @@ function run() {
 }
 
 run();
-
-
-
-///////////////////////////////////////////////////
-
-async function fetchTemperature() {
-  const response = await fetch('https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/455826/');
-  const data = await response.json();
-
-  const city = data.title;
-  document.querySelector('#city').insertAdjacentHTML('beforeend', city);
-
-  const cityTime = data.time;
-  document.querySelector('#time').insertAdjacentHTML('beforeend', cityTime);
-
-  const cityWeather = data.consolidated_weather[0].the_temp;
-  document.querySelector('#temperature').insertAdjacentHTML('beforeend', cityWeather);
-
-  return data;
-}
-
-// fetchTemperature().then(data => {
-//   data; // fetched movies
-// });
-
-
-
-// const navbarStatusUpdated = data.map(data => `<span class="fw-bold"> ${getDateTime(data.updated)}&nbsp;&nbsp;</span>`);
-// document.querySelector('#navbar-status-updated').insertAdjacentHTML('beforeend', navbarStatusUpdated);
