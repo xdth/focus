@@ -12,6 +12,9 @@ let app = {
     enabled: true,
     engine: 'google',
   },
+  time: {
+    format: 12,
+  },
   todo: {
     enabled: true,
   }
@@ -80,7 +83,6 @@ function handleAppuser(e) {
 
 function Appuser() {
   appuser.insertAdjacentHTML('beforeend', app.name);
-  console.log(appuser);
 
   if(app.name == '' || app.name == null) {
     appuser.focus();
@@ -179,10 +181,66 @@ function Search() {
 
 
 /**
- * Clocl
+ * Date and time
  */
 
 
+const getDateTime = () => {
+  timestamp = new Date();
+  // timestamp = new Date(1, 1, 1, 20, 4, 5);
+  let weekDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let weekDay = weekDayNames[timestamp.getDay()];
+  let day = timestamp.getDate();
+  let monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  let month = monthNames[timestamp.getMonth()];
+  let year = timestamp.getFullYear();
+  let hour = timestamp.getHours();
+  let minutes = timestamp.getMinutes();
+  let seconds = timestamp.getSeconds();
+
+  const addZero = (number) => {
+    if (number <= 9) {
+      number = '0' + number;
+    }
+    return number;
+  }
+
+  let amPm = '';
+  if (app.time.format === 12) {
+    amPm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12;
+  }
+
+  document.querySelector('#time').innerHTML = `${hour}:${addZero(minutes)}:${addZero(seconds)} ${amPm}`;
+  document.querySelector('#date').innerHTML = `${weekDay}, ${month} ${day}, ${year}.`;
+
+  setTimeout(getDateTime, 1000);
+};
+
+function getGreeting() {
+  timestamp = new Date();
+  // timestamp = new Date(1, 1, 1, 1, 4, 5);
+  let hour = timestamp.getHours();
+
+  let greeting = 'Good morning, ';
+
+  if (hour < 12) {
+    greeting = 'Good morning,'
+  } else if (hour < 18) {
+    greeting = 'Good afternoon,'
+  } else {
+    greeting = 'Good evening,'
+  }
+
+  document.querySelector('#greeting').insertAdjacentHTML('afterbegin', greeting);
+}
+
+function dateTime() {
+  getDateTime();
+  getGreeting();
+}
 
 /**
  * Run
@@ -193,12 +251,10 @@ function run() {
   if (data) {
     app = data;
   }
-
-  console.log(app);
-  
   
   Appuser();
   Search();
+  dateTime();
 }
 
 run();

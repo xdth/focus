@@ -12,7 +12,7 @@
     -o-background-size: cover;
     background-size: cover;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   body {
@@ -154,7 +154,8 @@
   }
 
   #time {
-    font-size: 8vw;
+    font-size: 7vw;
+    text-align: left;
   }
 
   
@@ -168,7 +169,7 @@
     }
 
     #time {
-      font-size: 12vw;
+      font-size: 10vw;
     }
   }
   
@@ -179,6 +180,6 @@
     }
   
     #time {
-      font-size: 15vw;
+      font-size: 12vw;
     }
   }
