@@ -10,6 +10,9 @@ let app = {
     enabled: true,
     engine: 'google',
   },
+  weather: {
+    enabled: true,
+  },
   time: {
     format: 12,
   },
@@ -179,6 +182,35 @@ function Search() {
 
 
 /**
+ * Weather
+ */
+var settingsWeatherEnabled = document.getElementById("settings-weather-enabled");
+var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
+
+var weather = document.getElementById("weather");
+function chooseWeatherEnabled() {
+  if(app.weather.enabled) {
+    settingsWeatherEnabled.classList.add('settings-item-selected');
+    settingsWeatherDisabled.classList.remove('settings-item-selected');
+    weather.style.display = "block";
+  } else {
+    settingsWeatherDisabled.classList.add('settings-item-selected');
+    settingsWeatherEnabled.classList.remove('settings-item-selected');
+    weather.style.display = "none";
+  }
+}
+
+function enableWeather(value) {
+  app.weather.enabled = value;
+  dataSave();
+  chooseWeatherEnabled();
+}
+
+function Weather() {
+  chooseWeatherEnabled();
+}
+
+/**
  * Date and time
  */
 
@@ -251,6 +283,7 @@ function run() {
   Appuser();
   Search();
   dateTime();
+  Weather();
 }
 
 run();
