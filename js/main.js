@@ -53,14 +53,13 @@ function dataDelete() {
 
 function toggleSettings() {
   var settings = document.getElementById("settings");
-  var html = document.getElementById("body");
 
   if (settings.style.display !== "block") {
     settings.style.display = "block";
-    html.style.background = "rgba(0, 0, 0, 0.5)";
+    settings.style.background = "rgba(0, 0, 0, 0.5)";
   } else {
     settings.style.display = "none";
-    html.style.background = "none";
+    settings.style.background = "none";
   }
 
   document.getElementById("menu-icon").classList.toggle("change");

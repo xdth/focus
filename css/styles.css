@@ -48,7 +48,7 @@
   }
 
   #menu-icon {
-    z-index: 99;
+    z-index: 100;
     /* position: fixed;
     top: 1;
     left: 0; */
@@ -62,10 +62,6 @@
     background-color: #ffffff;
     margin: 3px 10px;
     transition: 0.4s;
-  }
-
-  .bar1 {
-    background-color: green;
   }
   
   .change .bar1 {
@@ -88,8 +84,10 @@
 
   #settings {
     display: none;
-    min-height: 300px;
+    height: 100vh;
     width: 100%;
+    position: absolute;
+    z-index: 90;
     top: 0;
     left: 0;
     padding: 50px 10px;
