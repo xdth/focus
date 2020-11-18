@@ -220,13 +220,13 @@ async function getWeatherByCity(city) {
 async function getWeatherByCoordinates() {
   try {
     const response = await fetch(
-      `api.openweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
     );
 
     const data = await response.json();
     console.log(data);
   } catch(err) {
-    throw new Error("The weather service is temporarily unavailable. Please try later.");
+    throw Error("The weather service is temporarily unavailable. Please try later.");
   }  
 }
 
