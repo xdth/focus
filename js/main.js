@@ -12,6 +12,7 @@ let app = {
   },
   weather: {
     enabled: true,
+    city: 'Fortaleza',
   },
   greeting: {
     enabled: true,
@@ -279,6 +280,8 @@ function Greeting() {
 var settingsTimeEnabled = document.getElementById("settings-time-enabled");
 var settingsTimeDisabled = document.getElementById("settings-time-disabled");
 var time = document.getElementById("time");
+var settingsTime12 = document.getElementById("settings-time-12");
+var settingsTime24 = document.getElementById("settings-time-24");
 
 const getDateTime = () => {
   timestamp = new Date();
@@ -331,9 +334,26 @@ function enableTime(value) {
   chooseTimeEnabled();
 }
 
+function chooseTimeFormat() {
+  if(app.time.format === 12) {
+    settingsTime12.classList.add('settings-item-selected');
+    settingsTime24.classList.remove('settings-item-selected');
+  } else {
+    settingsTime24.classList.add('settings-item-selected');
+    settingsTime12.classList.remove('settings-item-selected');
+  }
+}
+
+function timeFormat(value) {
+  app.time.format = value;
+  dataSave();
+  chooseTimeFormat();
+}
+
 function CurrentTime() {
   getDateTime();
   chooseTimeEnabled();
+  chooseTimeFormat();
 }
 
 

@@ -81,7 +81,10 @@
           <li id="settings-time-enabled" class="settings-item" onclick="enableTime(true)">On</li>
           <li id="settings-time-disabled" class="settings-item" onclick="enableTime(false)">Off</li>
         </ul>
-        <strong>12h</strong> | 24h
+        <ul>
+          <li id="settings-time-12" class="settings-item" onclick="timeFormat(12)">12h</li>
+          <li id="settings-time-24" class="settings-item" onclick="timeFormat(24)">24h</li>
+        </ul>
       </div>
 
       <div class="settings-group">
@@ -125,7 +128,6 @@
     <div id="container" class="xrow">
       <section id="column-1" class="xcolumn">
         <h2 id="greeting">
-          &nbsp; 
           <span id="appuser" contenteditable="true"></span>.
         </h2>
         <p id="time"></p>
