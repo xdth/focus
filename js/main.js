@@ -254,7 +254,11 @@ function locationError(error) {
 }
 
 function getLocation() {
-  navigator.geolocation && navigator.geolocation.getCurrentPosition(locationSuccess,locationError);
+  navigator.geolocation 
+  && navigator.geolocation.watchPosition(locationSuccess, locationError, {
+    enableHighAccuracy: true,
+    timeout: 10000
+  });
 }
 
 
