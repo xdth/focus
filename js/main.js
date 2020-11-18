@@ -201,6 +201,12 @@ var settingsWeatherEnabled = document.getElementById("settings-weather-enabled")
 var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
 var weather = document.getElementById("weather");
 
+function getWeather() {
+  // is there anything in localStorage?
+  // try api call
+  //
+}
+
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
     settingsWeatherEnabled.classList.add('settings-item-selected');
@@ -405,6 +411,8 @@ function run() {
   Greeting();
   CurrentTime();
   CurrentDate();
+
+  console.log(config.apiKey);
 }
 
 run();
