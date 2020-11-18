@@ -12,6 +12,8 @@ let app = {
   },
   weather: {
     enabled: true,
+    latitude: null,
+    longitude: null,
     city: 'Fortaleza',
   },
   greeting: {
@@ -201,11 +203,61 @@ var settingsWeatherEnabled = document.getElementById("settings-weather-enabled")
 var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
 var weather = document.getElementById("weather");
 
-function getWeather() {
-  // is there anything in localStorage?
-  // try api call
-  //
+
+async function getWeatherByCity(city) {
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}`
+    );
+
+    const data = await response.json();
+    console.log(data);
+  } catch(err) {
+    throw new Error("The weather service is temporarily unavailable. Please try later.");
+  }  
 }
+
+async function getWeatherByCoordinates() {
+  try {
+    const response = await fetch(
+      `api.openweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
+    );
+
+    const data = await response.json();
+    console.log(data);
+  } catch(err) {
+    throw new Error("The weather service is temporarily unavailable. Please try later.");
+  }  
+}
+
+function locationSuccess(position) {
+  app.weather.latitude  = position.coords.latitude;
+  app.weather.longitude = position.coords.longitude
+  dataSave();
+}
+
+function locationError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      console.log("You denied the request for Geolocation. Please input your city manually via the Settings menu.")
+      break;
+    case error.POSITION_UNAVAILABLE:
+      console.log("It was not possible to retrieve your location.")
+      break;
+    case error.TIMEOUT:
+      console.log("Request timed out.")
+      break;
+    case error.UNKNOWN_ERROR:
+      console.log("Error unknown.")
+      break;
+  }
+}
+
+function getLocation() {
+  navigator.geolocation && navigator.geolocation.getCurrentPosition(locationSuccess,locationError);
+}
+
+
 
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
@@ -227,6 +279,8 @@ function enableWeather(value) {
 
 function Weather() {
   chooseWeatherEnabled();
+  getLocation();
+  getWeatherByCoordinates();
 }
 
 
@@ -412,7 +466,7 @@ function run() {
   CurrentTime();
   CurrentDate();
 
-  console.log(config.apiKey);
+  console.log();
 }
 
 run();
