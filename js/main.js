@@ -209,6 +209,24 @@ var weather = document.getElementById("weather");
 var settingsWeatherMetric = document.getElementById("settings-weather-metric");
 var settingsWeatherImperial = document.getElementById("settings-weather-imperial");
 
+
+// var search = document.getElementById("city");
+// city.addEventListener('keypress', handleCity);
+// city.addEventListener('blur', handleCity);
+
+function handleCity(e) {
+  if (e.type === 'keypress' || e.type === 'blur') {
+    // If user presses Enter
+    if (e.which == 13 || e.keyCode == 13) {
+      app.weather.city = e.target.value;
+      dataSave();
+      getWeatherByCity();      
+      city.blur();
+    }
+  } 
+}
+
+
 async function getWeatherByCity() {
   try {
     const response = await fetch(
@@ -217,7 +235,7 @@ async function getWeatherByCity() {
 
     const data = await response.json();
 
-    app.weather.name = data.name;
+    app.weather.city = data.name;
     app.weather.temp = data.main.temp;
     app.weather.main = data.weather[0].main;
     app.weather.description = data.weather[0].description;
@@ -225,6 +243,7 @@ async function getWeatherByCity() {
     dataSave();
 
     renderWeather();
+    city.value = app.weather.city;
 
   } catch(err) {
     throw new Error("The weather service is temporarily unavailable. Please try later.");
@@ -268,7 +287,7 @@ function enableWeather(value) {
 
 function renderWeather() {
   let unit = app.weather.unit === 'metric' ? 'C°' : 'F°';
-  weather.innerHTML = `${app.weather.name} - ${app.weather.temp} ${unit} - ${app.weather.main} - ${app.weather.description}`;
+  weather.innerHTML = `${app.weather.city} - ${app.weather.temp} ${unit} - ${app.weather.main} - ${app.weather.description}`;
 }
 
 function Weather() {
