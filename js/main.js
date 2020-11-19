@@ -13,6 +13,7 @@ let app = {
   weather: {
     enabled: true,
     city: 'Brussels',
+    unit: 'metric',
     temp: null,
     main: null,
     description: null,
@@ -205,11 +206,13 @@ var settingsWeatherEnabled = document.getElementById("settings-weather-enabled")
 var settingsWeatherDisabled = document.getElementById("settings-weather-disabled");
 var weather = document.getElementById("weather");
 
+var settingsWeatherMetric = document.getElementById("settings-weather-metric");
+var settingsWeatherImperial = document.getElementById("settings-weather-imperial");
 
 async function getWeatherByCity() {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${app.weather.city}&appid=${config.apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${app.weather.city}&units=${app.weather.unit}&lang=en&appid=${config.apiKey}`
     );
 
     const data = await response.json();
@@ -219,6 +222,7 @@ async function getWeatherByCity() {
     app.weather.main = data.weather[0].main;
     app.weather.description = data.weather[0].description;
     app.weather.updated = Date.now();
+    dataSave();
 
     renderWeather();
 
@@ -239,6 +243,23 @@ function chooseWeatherEnabled() {
   }
 }
 
+function chooseWeatherUnitEnabled(){
+  if(app.weather.unit === 'metric') {
+    settingsWeatherMetric.classList.add('settings-item-selected');
+    settingsWeatherImperial.classList.remove('settings-item-selected');
+  } else {
+    settingsWeatherImperial.classList.add('settings-item-selected');
+    settingsWeatherMetric.classList.remove('settings-item-selected');
+  }
+}
+
+function weatherUnit(unit) {
+  app.weather.unit = unit;
+  dataSave();
+  getWeatherByCity();
+  chooseWeatherUnitEnabled();
+}
+
 function enableWeather(value) {
   app.weather.enabled = value;
   dataSave();
@@ -246,12 +267,13 @@ function enableWeather(value) {
 }
 
 function renderWeather() {
-  let html = `${app.weather.name} - ${app.weather.temp} - ${app.weather.main} - ${app.weather.description}`
-  weather.insertAdjacentHTML('beforeend', html);
+  let unit = app.weather.unit === 'metric' ? 'C°' : 'F°';
+  weather.innerHTML = `${app.weather.name} - ${app.weather.temp} ${unit} - ${app.weather.main} - ${app.weather.description}`;
 }
 
 function Weather() {
   chooseWeatherEnabled();
+  chooseWeatherUnitEnabled();
 
   const timeElapsed = Date.now() - app.weather.updated;
 

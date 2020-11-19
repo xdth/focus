@@ -48,19 +48,15 @@
           <li id="settings-weather-enabled" class="settings-item" onclick="enableWeather(true)">On</li>
           <li id="settings-weather-disabled" class="settings-item" onclick="enableWeather(false)">Off</li>
         </ul>
-        <strong>C°</strong> | F°
+        <ul>
+          <li id="settings-weather-metric" class="settings-item" onclick="weatherUnit('metric')">C°</li>
+          <li id="settings-weather-imperial" class="settings-item" onclick="weatherUnit('imperial')">F°</li>
+        </ul>
       </div>
 
       <div class="settings-group">
-        <label for="browser">City: </label>
-        <input list="browsers" name="browser" id="browser" class="transparent-input">
-        <datalist id="browsers">
-          <option value="Edge">
-          <option value="Firefox">
-          <option value="Chrome">
-          <option value="Opera">
-          <option value="Safari">
-        </datalist>
+        <label for="city">City: </label>
+        <input id="city" class="transparent-input">
       </div>
 
       <div class="settings-group">
