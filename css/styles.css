@@ -118,6 +118,8 @@
   #search {
     border-bottom: 1px solid #ffffff;
     margin: auto;
+    min-width: 200px;
+    text-align: center;
   }
 
   [contenteditable=true]:empty:before {
