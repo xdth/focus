@@ -218,6 +218,7 @@ async function getWeatherByCity() {
     app.weather.temp = data.main.temp;
     app.weather.main = data.weather[0].main;
     app.weather.description = data.weather[0].description;
+    app.weather.updated = Date.now();
 
     renderWeather();
 
@@ -225,51 +226,6 @@ async function getWeatherByCity() {
     throw new Error("The weather service is temporarily unavailable. Please try later.");
   }  
 }
-
-// async function getWeatherByCoordinates() {
-//   try {
-//     const response = await fetch(
-//       `https://api.ssopenweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
-//     );
-
-//     const data = await response.json();
-//     console.log(new Date.now());
-//   } catch(err) {
-//     throw Error("The weather service is temporarily unavailable. Please try later.");
-//   }  
-// }
-
-// function locationSuccess(position) {
-//   app.weather.latitude  = position.coords.latitude;
-//   app.weather.longitude = position.coords.longitude
-//   app.weather.coord_time = Date.now();
-//   dataSave();
-// }
-
-// function locationError(error) {
-//   switch(error.code) {
-//     case error.PERMISSION_DENIED:
-//       console.log("You denied the request for Geolocation. Please input your city manually via the Settings menu.")
-//       break;
-//     case error.POSITION_UNAVAILABLE:
-//       console.log("It was not possible to retrieve your location.")
-//       break;
-//     case error.TIMEOUT:
-//       console.log("Request timed out.")
-//       break;
-//     case error.UNKNOWN_ERROR:
-//       console.log("Error unknown.")
-//       break;
-//   }
-// }
-
-// function getLocation() {
-//   navigator.geolocation 
-//   && navigator.geolocation.watchPosition(locationSuccess, locationError, {
-//     enableHighAccuracy: true,
-//     timeout: 10000
-//   });
-// }
 
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
@@ -297,16 +253,11 @@ function renderWeather() {
 function Weather() {
   chooseWeatherEnabled();
 
-  // 1605813718717
   const timeElapsed = Date.now() - app.weather.updated;
-  console.log(timeElapsed);
 
-  // if info is stored for over 1h, call api
-  if (timeElapsed < 3600000 || app.weather.updated === null) {
+  if (timeElapsed > 3600000 || app.weather.updated === null) {
     getWeatherByCity();
-    console.log("yes");
   } else {
-    console.log("no");
     renderWeather();
   }
 }
