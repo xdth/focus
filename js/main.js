@@ -12,9 +12,11 @@ let app = {
   },
   weather: {
     enabled: true,
-    latitude: null,
-    longitude: null,
-    city: 'Fortaleza',
+    city: 'Brussels',
+    temp: null,
+    main: null,
+    description: null,
+    updated: null,
   },
   greeting: {
     enabled: true,
@@ -204,64 +206,70 @@ var settingsWeatherDisabled = document.getElementById("settings-weather-disabled
 var weather = document.getElementById("weather");
 
 
-async function getWeatherByCity(city) {
+async function getWeatherByCity() {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.apiKey}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${app.weather.city}&appid=${config.apiKey}`
     );
 
     const data = await response.json();
-    console.log(data);
+
+    app.weather.name = data.name;
+    app.weather.temp = data.main.temp;
+    app.weather.main = data.weather[0].main;
+    app.weather.description = data.weather[0].description;
+
+    renderWeather();
+
   } catch(err) {
     throw new Error("The weather service is temporarily unavailable. Please try later.");
   }  
 }
 
-async function getWeatherByCoordinates() {
-  try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
-    );
+// async function getWeatherByCoordinates() {
+//   try {
+//     const response = await fetch(
+//       `https://api.ssopenweathermap.org/data/2.5/weather?lat=${app.weather.latitude}&lon=${app.weather.longitude}&appid=${config.apiKey}`
+//     );
 
-    const data = await response.json();
-    console.log(data);
-  } catch(err) {
-    throw Error("The weather service is temporarily unavailable. Please try later.");
-  }  
-}
+//     const data = await response.json();
+//     console.log(new Date.now());
+//   } catch(err) {
+//     throw Error("The weather service is temporarily unavailable. Please try later.");
+//   }  
+// }
 
-function locationSuccess(position) {
-  app.weather.latitude  = position.coords.latitude;
-  app.weather.longitude = position.coords.longitude
-  dataSave();
-}
+// function locationSuccess(position) {
+//   app.weather.latitude  = position.coords.latitude;
+//   app.weather.longitude = position.coords.longitude
+//   app.weather.coord_time = Date.now();
+//   dataSave();
+// }
 
-function locationError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      console.log("You denied the request for Geolocation. Please input your city manually via the Settings menu.")
-      break;
-    case error.POSITION_UNAVAILABLE:
-      console.log("It was not possible to retrieve your location.")
-      break;
-    case error.TIMEOUT:
-      console.log("Request timed out.")
-      break;
-    case error.UNKNOWN_ERROR:
-      console.log("Error unknown.")
-      break;
-  }
-}
+// function locationError(error) {
+//   switch(error.code) {
+//     case error.PERMISSION_DENIED:
+//       console.log("You denied the request for Geolocation. Please input your city manually via the Settings menu.")
+//       break;
+//     case error.POSITION_UNAVAILABLE:
+//       console.log("It was not possible to retrieve your location.")
+//       break;
+//     case error.TIMEOUT:
+//       console.log("Request timed out.")
+//       break;
+//     case error.UNKNOWN_ERROR:
+//       console.log("Error unknown.")
+//       break;
+//   }
+// }
 
-function getLocation() {
-  navigator.geolocation 
-  && navigator.geolocation.watchPosition(locationSuccess, locationError, {
-    enableHighAccuracy: true,
-    timeout: 10000
-  });
-}
-
-
+// function getLocation() {
+//   navigator.geolocation 
+//   && navigator.geolocation.watchPosition(locationSuccess, locationError, {
+//     enableHighAccuracy: true,
+//     timeout: 10000
+//   });
+// }
 
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
@@ -281,10 +289,26 @@ function enableWeather(value) {
   chooseWeatherEnabled();
 }
 
+function renderWeather() {
+  let html = `${app.weather.name} - ${app.weather.temp} - ${app.weather.main} - ${app.weather.description}`
+  weather.insertAdjacentHTML('beforeend', html);
+}
+
 function Weather() {
   chooseWeatherEnabled();
-  getLocation();
-  getWeatherByCoordinates();
+
+  // 1605813718717
+  const timeElapsed = Date.now() - app.weather.updated;
+  console.log(timeElapsed);
+
+  // if info is stored for over 1h, call api
+  if (timeElapsed < 3600000 || app.weather.updated === null) {
+    getWeatherByCity();
+    console.log("yes");
+  } else {
+    console.log("no");
+    renderWeather();
+  }
 }
 
 
