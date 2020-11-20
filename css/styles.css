@@ -85,7 +85,7 @@
 
   #settings {
     display: none;
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     position: absolute;
     z-index: 90;
@@ -151,7 +151,10 @@
   }
 
   #column-2 {
-    display: none;
+    /* display: none; */
+    /* background: darkblue; */
+    width: 50%;
+    padding-top: 50px;
   }
 
   #greeting {

@@ -250,7 +250,7 @@ async function getWeatherByCity() {
     const data = await response.json();
 
     app.weather.city = data.name;
-    app.weather.temp = data.main.temp;
+    app.weather.temp = Math.round(data.main.temp);
     app.weather.main = data.weather[0].main;
     app.weather.description = data.weather[0].description;
     app.weather.icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
@@ -312,8 +312,6 @@ function renderWeather() {
 function Weather() {
   chooseWeatherEnabled();
   chooseWeatherUnitEnabled();
-
-  // unsplash https://source.unsplash.com/2400x1600/?nature,water
 
   const timeElapsed = Date.now() - app.weather.updated;
 
@@ -488,6 +486,36 @@ function CurrentDate() {
   chooseDateEnabled();
 }
 
+/**
+ * ToDo
+ */
+
+var settingsTodoEnabled = document.getElementById("settings-todo-enabled");
+var settingsTodoDisabled = document.getElementById("settings-todo-disabled");
+var todo = document.getElementById("column-2");
+
+function chooseTodoEnabled() {
+  if(app.todo.enabled) {
+    settingsTodoEnabled.classList.add('settings-item-selected');
+    settingsTodoDisabled.classList.remove('settings-item-selected');
+    todo.style.display = "block";
+  } else {
+    settingsTodoDisabled.classList.add('settings-item-selected');
+    settingsTodoEnabled.classList.remove('settings-item-selected');
+    todo.style.display = "none";
+  }
+}
+
+function enableTodo(value) {
+  app.todo.enabled = value;
+  dataSave();
+  chooseTodoEnabled();
+}
+
+function Todo() {
+  chooseTodoEnabled();
+}
+
 
 /**
  * Run
@@ -499,17 +527,15 @@ function run() {
   if (data) {
     app = data;
   }
-  
+
   Appuser();
   Search();
   Weather();
   Greeting();
   CurrentTime();
   CurrentDate();
-
   changeBackground();
-
-  console.log();
+  Todo();
 }
 
 run();
