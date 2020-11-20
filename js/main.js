@@ -78,6 +78,30 @@ function resetApp() {
   location.reload();
 }
 
+
+const changeBackground = () => {
+  timestamp = new Date();
+  let hour = timestamp.getHours();
+
+  let dayPeriod = 'Good morning, ';
+
+  if (hour < 18) {
+    dayPeriod = 'day'
+  } else {
+    dayPeriod = 'night'
+  }
+
+
+// function changeBackground() {
+  let randomNumber = Math.floor(Math.random() * 5);
+
+  document.getElementsByTagName('html')[0].style.backgroundImage=`url(img/${dayPeriod}/background${randomNumber}.jpg)`;
+  console.log("check");
+  // setTimeout(changeBackground(),3000);
+
+  
+}
+
 /**
  * appuser
  */
@@ -251,7 +275,7 @@ async function getWeatherByCity() {
     throw new Error("The weather service is temporarily unavailable. Please try later.");
   }  
 }
-//
+
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
     settingsWeatherEnabled.classList.add('settings-item-selected');
@@ -493,6 +517,8 @@ function run() {
   Greeting();
   CurrentTime();
   CurrentDate();
+
+  changeBackground();
 
   console.log();
 }
