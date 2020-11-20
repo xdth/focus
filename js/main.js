@@ -91,15 +91,9 @@ const changeBackground = () => {
     dayPeriod = 'night'
   }
 
-
-// function changeBackground() {
   let randomNumber = Math.floor(Math.random() * 5);
 
   document.getElementsByTagName('html')[0].style.backgroundImage=`url(img/${dayPeriod}/background${randomNumber}.jpg)`;
-  console.log("check");
-  // setTimeout(changeBackground(),3000);
-
-  
 }
 
 /**
@@ -233,11 +227,6 @@ var weather = document.getElementById("weather");
 
 var settingsWeatherMetric = document.getElementById("settings-weather-metric");
 var settingsWeatherImperial = document.getElementById("settings-weather-imperial");
-
-
-// var search = document.getElementById("city");
-// city.addEventListener('keypress', handleCity);
-// city.addEventListener('blur', handleCity);
 
 function handleCity(e) {
   if (e.type === 'keypress' || e.type === 'blur') {
