@@ -251,7 +251,7 @@ async function getWeatherByCity() {
     throw new Error("The weather service is temporarily unavailable. Please try later.");
   }  
 }
-
+//
 function chooseWeatherEnabled() {
   if(app.weather.enabled) {
     settingsWeatherEnabled.classList.add('settings-item-selected');
