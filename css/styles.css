@@ -6,7 +6,7 @@
   }
   
   html { 
-    background: url(../img/background3.jpg) no-repeat center center fixed; 
+    background: url(../img/background2.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -54,6 +54,7 @@
     left: 0; */
     display: inline-block;
     cursor: pointer;
+    margin-right: 100px;
   }
 
   #menu-icon div {
@@ -128,6 +129,15 @@
     color: rgba(211, 211, 211, 0.856);
   }
 
+  #weather {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  /* #weather img {
+    width: 50px;
+  } */
+
   #container {
     height: 80vh;
   }
@@ -160,6 +170,11 @@
 
   
   @media (max-width: 800px) {
+    
+  #menu-icon {
+    margin-right: 90px;
+  }
+
     .xrow {
       flex-direction: column;
     }
@@ -174,6 +189,10 @@
   }
   
   @media (max-width: 600px) {
+    #menu-icon {
+      margin-right: 0px;
+    }
+
     #greeting {
       font-size: 1em;
       display: inline-flex;

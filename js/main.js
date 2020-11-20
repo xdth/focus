@@ -17,6 +17,7 @@ let app = {
     temp: null,
     main: null,
     description: null,
+    icon: null,
     updated: null,
   },
   greeting: {
@@ -239,6 +240,7 @@ async function getWeatherByCity() {
     app.weather.temp = data.main.temp;
     app.weather.main = data.weather[0].main;
     app.weather.description = data.weather[0].description;
+    app.weather.icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
     app.weather.updated = Date.now();
     dataSave();
 
@@ -287,12 +289,18 @@ function enableWeather(value) {
 
 function renderWeather() {
   let unit = app.weather.unit === 'metric' ? 'C°' : 'F°';
-  weather.innerHTML = `${app.weather.city} - ${app.weather.temp} ${unit} - ${app.weather.main} - ${app.weather.description}`;
+  weather.innerHTML = `
+    ${app.weather.city}<br/> 
+    ${app.weather.temp} ${unit} - 
+    <!--img src="${app.weather.icon}" alt="${app.weather.main}" /-->
+    ${app.weather.description}`;
 }
 
 function Weather() {
   chooseWeatherEnabled();
   chooseWeatherUnitEnabled();
+
+  // unsplash https://source.unsplash.com/2400x1600/?nature,water
 
   const timeElapsed = Date.now() - app.weather.updated;
 
