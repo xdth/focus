@@ -85,7 +85,7 @@
 
   #settings {
     display: none;
-    height: 120vh;
+    /* height: 200vh; */
     width: 100%;
     position: absolute;
     z-index: 90;
@@ -226,7 +226,6 @@
     #greeting {
       font-size: 1em;
       display: inline-flex;
-      margin-top: 50px;
     }
 
     #column-2 {
