@@ -171,15 +171,22 @@
     padding: 50px 50px 0 0;
   }
 
-  #todo-item-container {
+  .todo-item-container {
     min-width: 220px;
     display: flex;
     justify-content: space-between;
-    background: gray;
   }
 
-  .todo-item-completed {
+  .todo-item-container:hover {
+    border-bottom: 1px solid #ffffff;
+  }
 
+  .todo-item-icon-completed:hover {
+    color: green;
+  }
+
+  .todo-item-icon-delete:hover {
+    color: red;
   }
 
   .todo-item {
@@ -187,9 +194,6 @@
     min-width: 50px;
   }
 
-  .todo-item:focus {
-    border-bottom: 1px solid #ffffff;
-  }
   
   @media (max-width: 800px) {
     #menu-icon {
