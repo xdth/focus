@@ -125,7 +125,7 @@
 
   [contenteditable=true]:empty:before {
     content: attr(aria-placeholder);
-    display: block; /* For Firefox */
+    display: block-inline; /* For Firefox */
     color: rgba(211, 211, 211, 0.856);
   }
 
@@ -150,13 +150,6 @@
     width: 100%;
   }
 
-  #column-2 {
-    /* display: none; */
-    /* background: darkblue; */
-    width: 50%;
-    padding-top: 50px;
-  }
-
   #greeting {
     font-size: 1.5em;
     display: inline-flex;
@@ -171,12 +164,37 @@
     text-align: left;
   }
 
+  #column-2 {
+    /* display: none; */
+    /* background: darkblue; */
+    width: 20%;
+    padding: 50px 50px 0 0;
+  }
+
+  #todo-item-container {
+    min-width: 220px;
+    display: flex;
+    justify-content: space-between;
+    background: gray;
+  }
+
+  .todo-item-completed {
+
+  }
+
+  .todo-item {
+    display: block;
+    min-width: 50px;
+  }
+
+  .todo-item:focus {
+    border-bottom: 1px solid #ffffff;
+  }
   
   @media (max-width: 800px) {
-    
-  #menu-icon {
-    margin-right: 90px;
-  }
+    #menu-icon {
+      margin-right: 90px;
+    }
 
     .xrow {
       flex-direction: column;

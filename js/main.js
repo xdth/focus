@@ -32,6 +32,7 @@ let app = {
   },
   todo: {
     enabled: true,
+    items: [],
   }
 }
 
@@ -512,8 +513,69 @@ function enableTodo(value) {
   chooseTodoEnabled();
 }
 
+//////
+
+
+var todoItemsBox = document.getElementById("todo-items");
+var todoItemsInputs = [];
+
+function renderTodoItems() {
+  nextTodoItemInputIndex = 0;
+  todoItemsBox.innerHTML = '';
+// 
+  let i = 0;
+  for (i; i <= app.todo.items.length; i++) {
+    if (app.todo.items[i]) {
+      html = `
+        <div id="todo-item-container">
+          <span id="todo-item-${i}"
+          class="todo-item" contenteditable="true"
+          aria-placeholder="Enter new task"></span>
+          <div id="todo-item-actions">
+            <span class="todo-item-completed">\u2713</span>
+            <span class="todo-item-delete">\u00D7</span>
+          </div>
+        </div>`;
+      todoItemsBox.insertAdjacentHTML('beforeend', html);
+      document.getElementById(`todo-item-${i}`).innerHTML = app.todo.items[i];
+    } else {
+      html = `
+      <div id="todo-item-container">
+        <span id="todo-item-${i}"
+        class="todo-item" contenteditable="true"
+        aria-placeholder="Enter new task"></span>
+      </div>`;
+      todoItemsBox.insertAdjacentHTML('beforeend', html);
+    }
+
+  }
+}
+
+
+todoItemsBox.addEventListener('keypress', handleTodo);
+todoItemsBox.addEventListener('blur', handleTodo);
+
+function handleTodo(e) {
+  if (e.type === 'keypress' || e.type === 'blur') {
+    let todoItem = e.target.id;
+    todoItem = todoItem.split("-");
+    todoItem = todoItem[2];
+    if (e.target.innerText !== '' && e.target.innerText.length < 30) {
+      app.todo.items[todoItem] = e.target.innerText;
+      dataSave();
+      console.log("saving" + todoItem);
+    }
+    if (e.which == 13 || e.keyCode == 13 || e.type === 'blur') {
+      if (e.target.innerText !== '') {
+        renderTodoItems();
+      }
+    }
+  } 
+}
+
 function Todo() {
   chooseTodoEnabled();
+  renderTodoItems();
 }
 
 
@@ -528,14 +590,15 @@ function run() {
     app = data;
   }
 
-  Appuser();
   Search();
   Weather();
   Greeting();
   CurrentTime();
   CurrentDate();
-  changeBackground();
   Todo();
+
+  Appuser();
+  changeBackground();
 }
 
 run();
