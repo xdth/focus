@@ -32,20 +32,7 @@ let app = {
   },
   todo: {
     enabled: true,
-    items: [
-      [
-        'Do this',
-        false,
-      ],
-      [
-        'Do that',
-        false,
-      ],
-      [
-        'Do x',
-        true,
-      ],
-    ],
+    items: [],
   }
 }
 
