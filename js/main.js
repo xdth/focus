@@ -93,7 +93,7 @@ const changeBackground = () => {
     dayPeriod = 'night'
   }
 
-  let randomNumber = Math.floor(Math.random() * 5);
+  let randomNumber = Math.floor(Math.random() * 6);
 
   document.getElementsByTagName('html')[0].style.backgroundImage=`url(img/${dayPeriod}/background${randomNumber}.jpg)`;
 }
