@@ -2,13 +2,6 @@
   Focus App
 </h3>
 
-## What is the Focus app?
-
-Focus is an application that aims to help you better organize your day. It contains interesting features as
-well as astonishing background images and beautiful minimalist responsive design. It is built with vanilla Javascript and its whole code weights less than 25kb!
-
-It is also entirely open source.
-
 <p align="center">
   <a href="https://dthlabs.com">
     <img alt="Made by dthlabs" src="https://img.shields.io/badge/made%20by-dthlabs-%2304D361">
@@ -16,6 +9,14 @@ It is also entirely open source.
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
 </p>
+
+
+## What is the Focus app?
+
+Focus is an application that aims to help you better organize your day. It contains interesting features as
+well as astonishing background images and beautiful minimalist responsive design. It is built with vanilla Javascript and its whole code weights less than 25kb!
+
+It is also entirely open source.
 
 
 ## Features
