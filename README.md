@@ -2,28 +2,6 @@
   Focus App
 </h3>
 
-## Screenshots
-
- <table style="width:100%; border: none;">
-  <tr style="border: none;">
-    <td style="border: none;">
-      <img src="https://i.imgur.com/QZPzr93.png" alt="screenshot">
-    </td>
-    <td style="border: none;">
-      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
-    </td>
-  </tr>
-  <tr style="border: none;">
-    <td style="border: none;">
-      <img src="https://i.imgur.com/9zuYTlR.png" alt="screenshot">
-    </td>
-    <td style="border: none;">
-      <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
-    </td>
-  </tr>
-</table> 
-
-
 ## What is the Focus app?
 
 Focus is an application that aims to help you better organize your day. It contains interesting features as
@@ -48,3 +26,26 @@ It is also entirely open source.
 ## Online demo
 
 <a href="https://focus.dthlabs.com" alt="Focus app demo">https://focus.dthlabs.com</a>
+
+
+## Screenshots
+
+ <table style="width:100%; border: none;">
+  <tr style="border: none;">
+    <td style="border: none;">
+      <img src="https://i.imgur.com/QZPzr93.png" alt="screenshot">
+    </td>
+    <td style="border: none;">
+      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
+    </td>
+  </tr>
+  <tr style="border: none;">
+    <td style="border: none;">
+      <img src="https://i.imgur.com/9zuYTlR.png" alt="screenshot">
+    </td>
+    <td style="border: none;">
+      <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
+    </td>
+  </tr>
+</table> 
+
