@@ -9,15 +9,13 @@
     <td>
       <img src="https://i.imgur.com/QZPzr93.png" alt="screenshot">
     </td>
-  </tr>
-  <tr>
     <td>
-      <img src="https://i.imgur.com/9zuYTlR.png" alt="screenshot">
+      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
     </td>
   </tr>
   <tr>
     <td>
-      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
+      <img src="https://i.imgur.com/9zuYTlR.png" alt="screenshot">
     </td>
     <td>
       <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
