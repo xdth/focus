@@ -1,6 +1,7 @@
 /**
- * Todo:
- *  Cache API response in localStorage for 1h
+ * Focus App
+ * Author: dth [at] dthlabs.com
+ * Date: Nov 22, 2020
  */
 
 // app object 
@@ -107,7 +108,6 @@ appuser.addEventListener('blur', handleAppuser);
 
 function handleAppuser(e) {
   if (e.type === 'keypress') {
-    // If user presses Enter
     if (e.which == 13 || e.keyCode == 13) {
       app.name = e.target.innerText;
       dataSave();
@@ -144,7 +144,6 @@ search.addEventListener('blur', handleSearch);
 
 function handleSearch(e) {
   if (e.type === 'keypress') {
-    // If user presses Enter
     if (e.which == 13 || e.keyCode == 13) {
       switch (app.search.engine) {
         case 'duckduckgo':
@@ -231,7 +230,6 @@ var settingsWeatherImperial = document.getElementById("settings-weather-imperial
 
 function handleCity(e) {
   if (e.type === 'keypress' || e.type === 'blur') {
-    // If user presses Enter
     if (e.which == 13 || e.keyCode == 13) {
       app.weather.city = e.target.value;
       dataSave();
@@ -513,8 +511,6 @@ function enableTodo(value) {
   chooseTodoEnabled();
 }
 
-//////
-
 function handleTodoActionToggleCompleted(item) {
   app.todo.items[item][1] = !app.todo.items[item][1];
   dataSave();
@@ -564,7 +560,6 @@ function renderTodoItems() {
   }
 }
 
-
 todoItemsBox.addEventListener('keypress', handleTodo);
 todoItemsBox.addEventListener('blur', handleTodo);
 
@@ -578,15 +573,6 @@ function handleTodo(e) {
 
       app.todo.items[todoItem] = currentItem;
       dataSave();
-      console.log("saving" + todoItem);
-
-
-      // if (app.todo.items[todoItem]) {
-      //   app.todo.items[todoItem][0] = e.target.innerText;
-      //   dataSave();
-      //   console.log("saving" + todoItem);
-      // }
-
     }
     if (e.which == 13 || e.keyCode == 13 || e.type === 'blur') {
       if (e.target.innerText !== '') {

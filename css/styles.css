@@ -23,22 +23,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: lightgray; */
   }
 
   .xcolumn {
     height: 100%;
-    /* background: rgba(0, 0, 0, 0.1); */
   }
-
 
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    /* background: rgba(0, 0, 0, 0.05); */
-    /* background: gray; */
   }
 
   .transparent-input {
@@ -49,9 +44,6 @@
 
   #menu-icon {
     z-index: 100;
-    /* position: fixed;
-    top: 1;
-    left: 0; */
     display: inline-block;
     cursor: pointer;
     margin-right: 100px;
@@ -85,7 +77,6 @@
 
   #settings {
     display: none;
-    /* height: 200vh; */
     width: 100%;
     position: absolute;
     z-index: 90;
@@ -103,9 +94,6 @@
     list-style: none;
     display: inline;
     cursor: pointer;
-  }
-
-  .settings-item {
   }
 
   .settings-item:hover {
@@ -133,10 +121,6 @@
     text-align: right;
     font-weight: bold;
   }
-
-  /* #weather img {
-    width: 50px;
-  } */
 
   #container {
     height: 80vh;
@@ -194,7 +178,6 @@
     display: block;
     min-width: 50px;
   }
-
   
   @media (max-width: 800px) {
     #menu-icon {
