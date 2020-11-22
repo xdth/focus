@@ -5,19 +5,19 @@
 ## Screenshots
 
  <table style="width:100%; border: none;">
-  <tr>
-    <td>
+  <tr style="border: none;">
+    <td style="border: none;">
       <img src="https://i.imgur.com/QZPzr93.png" alt="screenshot">
     </td>
-    <td>
+    <td style="border: none;">
       <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
     </td>
   </tr>
-  <tr>
-    <td>
+  <tr style="border: none;">
+    <td style="border: none;">
       <img src="https://i.imgur.com/9zuYTlR.png" alt="screenshot">
     </td>
-    <td>
+    <td style="border: none;">
       <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
     </td>
   </tr>
