@@ -9,6 +9,15 @@ well as astonishing background images and beautiful minimalist responsive design
 
 It is also entirely open source.
 
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
+[![Issues](https://img.shields.io/github/issues-raw/tterb/PlayMusic.svg?maxAge=25000)](https://github.com/tterb/Hyde/issues)
+
+[![GitHub contributors](https://img.shields.io/github/contributors/cdnjs/cdnjs.svg?style=flat)]()  
+
+[![HitCount](http://hits.dwyl.io/tterb/Hyde.svg)](http://hits.dwyl.io/tterb/Hyde)
+
+
 
 ## Features
 
