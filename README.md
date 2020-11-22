@@ -4,7 +4,7 @@
 
 ## Screenshots
 
- <table style="width:100%">
+ <table style="width:100%; border: none;">
   <tr>
     <td>
       <img src="https://i.imgur.com/QZPzr93.png" alt="screenshot">
@@ -17,10 +17,10 @@
   </tr>
   <tr>
     <td>
-      <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
+      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
     </td>
     <td>
-      <img src="https://i.imgur.com/vbSSOp9.png" alt="screenshot">
+      <img src="https://i.imgur.com/fmdh7yY.png" alt="screenshot">
     </td>
   </tr>
 </table> 
